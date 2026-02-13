@@ -1,53 +1,22 @@
-<!doctype html>
-<html lang="it">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>💘 Valentine?</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-  <main class="card">
-    <div class="emoji" aria-hidden="true">💘</div>
-    <h1>Will you be my Valentine?</h1>
-    <p class="sub">Prometto snack, film e zero drama 😇</p>
-
-    <div class="buttons">
-      <button id="yesBtn" class="btn yes">Sì 💖</button>
-      <button id="noBtn" class="btn no">No 🙈</button>
+    <div class="container">
+        <h1>Will you be my Valentine?</h1>
+        <div class="buttons">
+            <button class="yes-button" onclick="handleYesClick()">Yes</button>
+            <button class="no-button" onclick="handleNoClick()">No</button>
+        </div>
+        <div class="gif_container">
+            <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbW5lenZyZHI5OXM2eW95b3pmMG40cWVrMDhtNjVuM3A4dGNxa2g2dSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/VM1fcpu2bKs1e2Kdbj/giphy.gif" alt="Cute GIF">
+        </div>
     </div>
-
-    <p id="hint" class="hint" aria-live="polite"></p>
-  </main>
-
-  <!-- MODAL / OVERLAY -->
-  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="modal-content">
-      <h2>Yesss! 🎉</h2>
-
-      <!-- Opzione A: GIF locale nel progetto -->
-      <img id="valGif" class="gif" src="assets/valentine.gif" alt="GIF carina" />
-
-      <!-- Opzione B: GIF da URL (se preferisci) -->
-      <!-- <img id="valGif" class="gif" src="https://..." alt="GIF carina" /> -->
-
-      <p class="movie-text">
-        Allora… stasera film? 🍿🎬<br/>
-        Io direi: coperta + snack + divano.
-      </p>
-
-      <div class="modal-actions">
-        <a id="movieBtn" class="btn yes" href="#" target="_blank" rel="noopener">Ok! 😍</a>
-        <button id="closeModal" class="btn no">Chiudi</button>
-      </div>
-
-      <p class="small">
-        (Se vuoi, “Ok!” può aprire WhatsApp con un messaggio già pronto)
-      </p>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
