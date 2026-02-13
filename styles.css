@@ -12,14 +12,15 @@
 
 body{
   margin:0;
-  min-height:100vh;
+  min-height:100svh;
   display:grid;
   place-items:center;
   padding:18px;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   color:var(--text);
   background: radial-gradient(circle at top, var(--bg1), var(--bg2));
-  overflow:hidden;
+  overflow-x:hidden;
+  overflow-y:auto;
 }
 
 /* cuoricini soft in background */
@@ -48,7 +49,7 @@ body{
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255,255,255,.55);
   border-radius: 26px;
-  padding: 26px 22px 18px;
+  padding: 26px 22px 22px;
   text-align:center;
   box-shadow: 0 22px 60px rgba(0,0,0,.18);
   position: relative;
@@ -85,7 +86,7 @@ h1{
 }
 
 .gif_container img{
-  width: clamp(220px, 45vw, 360px); /* sempre “giusta” */
+  width: clamp(200px, 42vw, 340px);
   height: auto;
   border-radius: 18px;
   box-shadow: 0 16px 45px rgba(0,0,0,.18);
@@ -124,6 +125,7 @@ button:active{ transform: scale(.98); }
 .no-button{
   background: var(--no);
   color: white;
+  z-index: 9999; /* quando scappa, resta sopra */
 }
 
 /* testi sotto */
