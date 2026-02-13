@@ -10,6 +10,7 @@ body {
 
 .container {
     text-align: center;
+    padding: 20px;
 }
 
 .header_text {
@@ -20,5 +21,14 @@ body {
 .gif_container img {
     width: 100%; 
     max-width: 500px; 
-    height: auto; 
+    height: auto;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+
+.invite_text {
+    margin-top: 25px;
+    font-size: 1.5em;
+    color: #b71c1c;
+    line-height: 1.5;
 }
