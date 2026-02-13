@@ -1,0 +1,27 @@
+.gif{
+  width: min(320px, 85vw);
+  border-radius: 16px;
+  margin: 12px auto 8px;
+  display:block;
+  box-shadow: 0 14px 40px rgba(0,0,0,.18);
+}
+
+.movie-text{
+  margin: 10px 0 14px;
+  font-size: 16px;
+  line-height: 1.35;
+}
+
+.modal-actions{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-top: 6px;
+}
+
+.small{
+  margin: 12px 0 0;
+  font-size: 12px;
+  opacity: .75;
+}
