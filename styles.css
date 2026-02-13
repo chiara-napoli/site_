@@ -1,73 +1,141 @@
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-  background: linear-gradient(135deg, #f9e3e3, #ffd6e0);
-  font-family: 'Arial', sans-serif;
-  flex-direction: column;
-  text-align: center;
+:root{
+  --bg1:#ffdde1;
+  --bg2:#ee9ca7;
+  --card: rgba(255,255,255,.78);
+  --text:#2b2b2b;
+  --muted:#4b4b4b;
+  --yes:#22c55e;
+  --no:#ef4444;
 }
 
-/* Container principale */
-.container {
-  text-align: center;
-  padding: 20px;
+*{ box-sizing: border-box; }
+
+body{
+  margin:0;
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  padding:18px;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color:var(--text);
+  background: radial-gradient(circle at top, var(--bg1), var(--bg2));
+  overflow:hidden;
 }
 
-/* Titolo */
-h1 {
-  font-size: 2.5em;
-  color: #d32f2f;
-  margin-bottom: 10px;
+/* cuoricini soft in background */
+.bg-hearts{
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .18;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,.9) 0 2px, transparent 3px),
+    radial-gradient(circle at 80% 30%, rgba(255,255,255,.9) 0 2px, transparent 3px),
+    radial-gradient(circle at 30% 75%, rgba(255,255,255,.9) 0 2px, transparent 3px),
+    radial-gradient(circle at 70% 80%, rgba(255,255,255,.9) 0 2px, transparent 3px);
+  filter: blur(.2px);
+  animation: floatBg 8s ease-in-out infinite alternate;
 }
 
-/* Bottoni */
-.buttons {
-  margin-top: 20px;
+@keyframes floatBg{
+  from{ transform: translateY(0px); }
+  to{ transform: translateY(-14px); }
+}
+
+.card{
+  width: min(560px, 92vw);
+  background: var(--card);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,.55);
+  border-radius: 26px;
+  padding: 26px 22px 18px;
+  text-align:center;
+  box-shadow: 0 22px 60px rgba(0,0,0,.18);
   position: relative;
 }
 
-/* Bottone YES */
-.yes-button {
-  font-size: 1.5em;
-  padding: 10px 20px;
-  margin-right: 10px;
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.2s ease;
+.badge{
+  width: 62px;
+  height: 62px;
+  border-radius: 18px;
+  display:grid;
+  place-items:center;
+  margin: 0 auto 10px;
+  font-size: 34px;
+  background: rgba(255,255,255,.75);
+  box-shadow: 0 10px 26px rgba(0,0,0,.10);
 }
 
-.yes-button:hover {
-  transform: scale(1.08);
-  background-color: #43a047;
+h1{
+  margin: 6px 0 6px;
+  font-size: clamp(22px, 4vw, 36px);
 }
 
-/* Bottone NO */
-.no-button {
-  font-size: 1.5em;
-  padding: 10px 20px;
-  background-color: #f44336;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.2s ease;
+.subtitle{
+  margin: 0 0 14px;
+  color: var(--muted);
+  opacity: .9;
+  line-height: 1.35;
 }
 
-.no-button:hover {
-  transform: scale(1.08);
-  background-color: #e53935;
+.gif_container{
+  display:flex;
+  justify-content:center;
+  margin: 10px 0 16px;
 }
 
-.gif_container img {
-  width: 250px;
-  max-width: 75%;
+.gif_container img{
+  width: clamp(220px, 45vw, 360px); /* sempre “giusta” */
   height: auto;
-  border-radius: 15px;
-  margin-top: 25px;
+  border-radius: 18px;
+  box-shadow: 0 16px 45px rgba(0,0,0,.18);
+  border: 1px solid rgba(255,255,255,.6);
+}
+
+/* bottoni */
+.buttons{
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  align-items:center;
+  margin-top: 4px;
+  position: relative;
+  height: 58px;
+}
+
+button{
+  border:0;
+  border-radius: 16px;
+  padding: 14px 18px;
+  font-weight: 850;
+  cursor: pointer;
+  box-shadow: 0 12px 26px rgba(0,0,0,.14);
+  transition: transform .12s ease, filter .12s ease;
+}
+
+button:hover{ transform: translateY(-1px); }
+button:active{ transform: scale(.98); }
+
+.yes-button{
+  background: var(--yes);
+  color: white;
+}
+
+.no-button{
+  background: var(--no);
+  color: white;
+}
+
+/* testi sotto */
+.tip{
+  margin: 12px 0 2px;
+  font-size: 13px;
+  color: rgba(0,0,0,.55);
+}
+
+.hint{
+  margin: 6px 0 0;
+  min-height: 22px;
+  font-size: 14px;
+  color: rgba(0,0,0,.70);
 }
