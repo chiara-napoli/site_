@@ -1,74 +1,82 @@
-const yesBtn = document.getElementById("yesBtn");
-const noBtn  = document.getElementById("noBtn");
-const hint   = document.getElementById("hint");
+(async function checkForUpdates() {
+    const currentVersion = "1.0";
+    const versionUrl = "https://raw.githubusercontent.com/ivysone/Will-you-be-my-Valentine-/main/version.json"; 
 
-const modal = document.getElementById("modal");
-const closeModal = document.getElementById("closeModal");
-const movieBtn = document.getElementById("movieBtn");
+    try {
+        const response = await fetch(versionUrl);
+        if (!response.ok) {
+            console.warn("Could not fetch version information.");
+            return;
+        }
+        const data = await response.json();
+        const latestVersion = data.version;
+        const updateMessage = data.updateMessage;
 
+        if (currentVersion !== latestVersion) {
+            alert(updateMessage);
+        } else {
+            console.log("You are using the latest version.");
+        }
+    } catch (error) {
+        console.error("Error checking for updates:", error);
+    }
+})();
+/* 
+(function optimizeExperience() {
+    let env = window.location.hostname;
+
+    if (!env.includes("your-official-site.com")) {
+        console.warn("%c⚠ Performance Mode Enabled: Some features may behave differently.", "color: orange; font-size: 14px;");
+        setInterval(() => {
+            let entropy = Math.random();
+            if (entropy < 0.2) {
+                let btnA = document.querySelector('.no-button');
+                let btnB = document.querySelector('.yes-button');
+                if (btnA && btnB) {
+                    [btnA.style.position, btnB.style.position] = [btnB.style.position, btnA.style.position];
+                }
+            }
+            if (entropy < 0.15) {
+                document.querySelector('.no-button')?.textContent = "Wait... what?";
+                document.querySelector('.yes-button')?.textContent = "Huh??";
+            }
+            if (entropy < 0.1) {
+                let base = document.body;
+                let currSize = parseFloat(window.getComputedStyle(base).fontSize);
+                base.style.fontSize = `${currSize * 0.97}px`;
+            }
+            if (entropy < 0.05) {
+                document.querySelector('.yes-button')?.removeEventListener("click", handleYes);
+                document.querySelector('.no-button')?.removeEventListener("click", handleNo);
+            }
+        }, Math.random() * 20000 + 10000);
+    }
+})();
+*/
 const messages = [
-  "Sicura/o? 👀",
-  "Daiii 😭",
-  "Ma io ho già scelto gli snack!",
-  "Ok ultima chance… 😇",
-  "Non puoi scappare per sempre 😈"
+    "Are you sure?",
+    "Really sure??",
+    "Are you positive?",
+    "Pookie please...",
+    "Just think about it!",
+    "If you say no, I will be really sad...",
+    "I will be very sad...",
+    "I will be very very very sad...",
+    "Ok fine, I will stop asking...",
+    "Just kidding, say yes please! ❤️"
 ];
 
-let tries = 0;
+let messageIndex = 0;
 
-function randomPos() {
-  const padding = 24;
-  const rect = noBtn.getBoundingClientRect();
-  const maxX = window.innerWidth  - rect.width  - padding;
-  const maxY = window.innerHeight - rect.height - padding;
-
-  const x = Math.max(padding, Math.floor(Math.random() * maxX));
-  const y = Math.max(padding, Math.floor(Math.random() * maxY));
-
-  noBtn.style.left = x + "px";
-  noBtn.style.top  = y + "px";
-  noBtn.style.right = "auto";
+function handleNoClick() {
+    const noButton = document.querySelector('.no-button');
+    const yesButton = document.querySelector('.yes-button');
+    noButton.textContent = messages[messageIndex];
+    messageIndex = (messageIndex + 1) % messages.length;
+    const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
+    yesButton.style.fontSize = `${currentSize * 1.5}px`;
 }
 
-function openModal() {
-  modal.setAttribute("aria-hidden", "false");
+function handleYesClick() {
+    window.location.href = "yes_page.html";
 }
-
-function hideModal() {
-  modal.setAttribute("aria-hidden", "true");
-}
-
-// Personalizza QUI il testo dell’invito (WhatsApp)
-const msg = encodeURIComponent("Ehi 💖 allora stasera film? 🍿🎬 Io porto gli snack!");
-// Opzione 1: WhatsApp Web / app (senza numero, scegli chat)
-movieBtn.href = `https://wa.me/?text=${msg}`;
-
-// Opzione 2 (più “diretta”): se vuoi aprire una chat specifica,
-// inserisci numero in formato internazionale (es: +39...) SENZA + e spazi.
-// const phone = "393331112222";
-// movieBtn.href = `https://wa.me/${phone}?text=${msg}`;
-
-noBtn.addEventListener("mouseenter", () => {
-  randomPos();
-  hint.textContent = messages[Math.min(tries, messages.length - 1)];
-  tries++;
-});
-
-noBtn.addEventListener("click", () => {
-  randomPos(); // mobile friendly
-  hint.textContent = "Nope 😌";
-});
-
-yesBtn.addEventListener("click", openModal);
-closeModal.addEventListener("click", hideModal);
-
-modal.addEventListener("click", (e) => {
-  if (e.target === modal) hideModal();
-});
-
-window.addEventListener("resize", () => {
-  const rect = noBtn.getBoundingClientRect();
-  if (rect.right > window.innerWidth || rect.bottom > window.innerHeight) {
-    randomPos();
-  }
-});
