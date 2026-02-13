@@ -99,9 +99,10 @@ h1{
   gap:12px;
   justify-content:center;
   align-items:center;
-  margin-top: 4px;
+  margin-top: 12px;
   position: relative;
-  height: 58px;
+  z-index: 10;
+  height: auto; /* importante */
 }
 
 button{
@@ -125,7 +126,7 @@ button:active{ transform: scale(.98); }
 .no-button{
   background: var(--no);
   color: white;
-  z-index: 9999; /* quando scappa, resta sopra */
+  z-index: 9999;
 }
 
 /* testi sotto */
