@@ -4,26 +4,43 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #f9e3e3;
+    background: linear-gradient(135deg, #f9e3e3, #ffd6e0);
     font-family: 'Arial', sans-serif;
+    text-align: center;
 }
 
 .container {
-    text-align: center;
     padding: 20px;
+    animation: fadeIn 1.2s ease forwards;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .header_text {
-    font-size: 3em;
+    font-size: 2.8em;
     color: #d32f2f;
+    margin-bottom: 10px;
+}
+
+.sub_text {
+    font-size: 1.2em;
+    color: #b71c1c;
+    margin-bottom: 20px;
 }
 
 .gif_container img {
-    width: 100%; 
-    max-width: 500px; 
+    width: 300px;
+    max-width: 85%;
     height: auto;
     border-radius: 20px;
-    margin-top: 20px;
+    margin-top: 10px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
 }
 
 .invite_text {
